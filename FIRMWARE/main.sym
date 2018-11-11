@@ -1,0 +1,98 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004-005 @WRITE_PROGRAM_MEMORY8.P2
+008     PSP_DATA
+015     CCP_1
+015     CCP_1_LOW
+016     CCP_1_HIGH
+01B     CCP_2_LOW
+01B     CCP_2
+01C     CCP_2_HIGH
+020     t_up
+021     menu
+022     lcd_init.i
+022     @PSTRINGC7_645.@SCRATCH1
+023-026 lcd_init.LCD_INIT_STRING
+023     @PSTRINGC7_645.@SCRATCH2
+024     @PSTRINGC7_645.@SCRATCH3
+025     lcd_putc.c
+025     @PSTRINGC7_645.@SCRATCH4
+026     lcd_gotoxy.x
+027     @delay_ms1.P1
+027     lcd_gotoxy.y
+027     lcd_init.@SCRATCH1
+028     lcd_gotoxy.address
+029     lcd_gotoxy.@SCRATCH1
+02A     lcd_send_byte.address
+02B     lcd_send_byte.n
+02C     lcd_read_byte.low
+02C     lcd_send_byte.@SCRATCH1
+02D     lcd_send_nibble.n
+02D     lcd_read_byte.high
+02E     lcd_read_nibble.n
+02E     lcd_read_byte.@SCRATCH1
+02F     lcd_read_nibble.@SCRATCH1
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+09C.6   C1OUT
+09C.7   C2OUT
+10D-10E @READ_PROGRAM_MEMORY8.P1
+10D-10E @WRITE_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+000004  @const667.call
+000007  @const669.call
+00000A  @const670.call
+00000D  @const671.call
+000010  @delay_ms1
+000025  lcd_send_nibble
+000050  lcd_read_nibble
+000081  lcd_send_byte
+000089  lcd_read_byte
+0000DD  lcd_init
+000121  setup
+00013C  selectMenu
+000156  lcd_gotoxy
+000168  lcd_putc
+000194  @PSTRINGC7_645
+0001EA  showMenu
+00021F  @goto10722
+000227  @cinit1
+000227  MAIN
+000233  @cinit2
+
+Project Directory:
+    D:\UFSC\projeto_final_banco_baterias-20181108T214644Z-001\projeto_final_banco_baterias\FIRMWARE\
+
+Project Files:
+    main.c                                                  [11-nov-18 19:27  CRC=4D9B26C0]
+    main.h                                                  [11-nov-18 19:02  CRC=AF238DFE]
+    C:\Program Files (x86)\PICC\Devices\16F877A.h           [12-nov-13 15:35  CRC=81334808]
+    C:\Program Files (x86)\PICC\Drivers\lcd.c               [19-set-13 16:38  CRC=D1A6378A]
+
+Source signature=213E6BDA
+
+Units:
+    main (main)
+
+Compiler Settings:
+    Processor:      PIC16F877A
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   main.xsym
+    Errors:      main.err
+    Ext Symbols: main.esym
+    INHX8:       main.hex
+    Symbols:     main.sym
+    List:        main.lst
+    Debug/COFF:  main.cof
+    Project:     main.ccspjt
+    Call Tree:   main.tre
+    Statistics:  main.STA
