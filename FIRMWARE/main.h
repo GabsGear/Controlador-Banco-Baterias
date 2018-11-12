@@ -12,6 +12,7 @@
 
 
 #define clear lcd_putc('\f');
+#define delay_adc delay_us(1000); 
 // lcd pins
 #define LCD_ENABLE_PIN  PIN_E0                                    
 #define LCD_RS_PIN      PIN_E1                                    
@@ -24,13 +25,23 @@
 // fator divisor de tensao
 #define relac 11.1
 
-
 // voltage pins
 #device ADC=8
 #define V1 AN0
 #define V2 AN1
 #define V3 AN2
 #define V4 AN3
+
+// relays
+#define S1 PIN_D0
+#define S2 PIN_D1
+#define S3 PIN_D2
+
+// output leds
+#define LB1 PIN_C0
+#define LB2 PIN_C1
+#define LB3 PIN_C2
+#define LB4 PIN_C3
 
 // menu pins 
 #define up PIN_B1
@@ -44,3 +55,6 @@
 float convertVoltage(int digitalRead);
 void selectMenu();
 void showMenu();
+void readVoltages();
+void setupSwitches();
+void bateryStatus();

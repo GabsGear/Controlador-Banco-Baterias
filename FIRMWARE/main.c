@@ -2,6 +2,7 @@
 
 int t_up = 0;
 int menu = 0;
+int v1_dc, v2_dc, v3_dc, v4_dc = 0 ;
 
 void setup(){
    lcd_init();
@@ -13,8 +14,10 @@ void setup(){
    setup_adc(ADC_CLOCK_DIV_32);
    setup_adc_ports(V1); 
    
+   output_low(S1);
+   output_low(S2);
+   output_low(S3);
 }
-
 
 void main()
 {
@@ -22,50 +25,46 @@ void main()
      
      while (1){
          selectMenu();
-         showMenu();
-         delay_ms(200);
+         showMenu(); 
+         readVoltages();
+         setupSwitches();
+         bateryStatus();
+         delay_ms(400);  
       }
 }
 
-
-
-
-/**
-      int digital_value;
-      int valor;
-      WHILE (1){
-         delay_us(20); 
-         set_adc_channel(0);
-         digital_value = read_adc();
-         printf(LCD_PUTC,"ADC : %i", digital_value);
-         float valor = convertVoltage(digital_value);
-       
-         printf(LCD_PUTC,"\nReal: %.2f", valor);
-         delay_ms(2000);
-         clear;
-      }
-
-
-**/
+void readVoltages(){ // AQUI TA ZUADO
+      delay_adc;
+      set_adc_channel(0);
+      delay_adc;
+      v1_dc = read_adc();
+      v2_dc = 50;
+      v3_dc = 50;
+      v4_dc = 50;
+}
 
 void showMenu(){
   switch(menu){
        case 1:          
              clear;
-             printf(LCD_PUTC,"Menu1");
+             printf(LCD_PUTC,"Bateria 1");
+             printf(LCD_PUTC,"\nTensao: %i V", v1_dc);
              break;                                    
        case 2:   
              clear;
-             printf(LCD_PUTC,"Menu2");                                       
+             printf(LCD_PUTC,"Bateria 2");
+             printf(LCD_PUTC,"\nTensao 2: %i V",  v2_dc);
              break;                                     
        case 3:    
              clear;
-             printf(LCD_PUTC,"Menu3");                                      
-             break;       
+             printf(LCD_PUTC,"Bateria 3");
+             printf(LCD_PUTC,"\nTensao: %i V", v3_dc);
+             break;     
        case 4:   
              clear;
-             printf(LCD_PUTC,"Menu4");                                    
-             break;   
+             printf(LCD_PUTC,"Bateria 4");
+             printf(LCD_PUTC,"\nTensao: %i V",  v4_dc);
+             break; 
     } 
 }
 
@@ -82,4 +81,30 @@ void selectMenu(){
 float convertVoltage(int digital_value){
       float analogic_value = (5*digital_value)/255.0;
       return 3 * analogic_value;
+}
+
+void setupSwitches(){
+   if ((v1_dc < 25) || (v2_dc < 25)) output_high(S1);
+   else output_low(S1);
+   
+   if ((v2_dc < 25) || (v3_dc < 25)) output_high(S2);
+   else  output_low(S2);
+   
+   if ((v3_dc < 25) || (v4_dc < 25)) output_high(S3);
+   else  output_low(S3);
+   
+}
+
+void bateryStatus(){
+    if (v1_dc < 25) output_high(LB1);
+    else  output_low(LB1);
+    
+    if (v2_dc < 25) output_high(LB2);
+    else  output_low(LB2);
+    
+    if (v3_dc < 25) output_high(LB3);
+    else  output_low(LB3);
+    
+    if (v4_dc < 25) output_high(LB4);
+    else  output_low(LB4);
 }

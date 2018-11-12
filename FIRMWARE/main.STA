@@ -1,63 +1,73 @@
 
-ROM used:   573/8192 (7%)
-            573/8192 (7%) including unused fragments
+ROM used:   1058/8192 (13%)
+            1058/8192 (13%) including unused fragments
 
-            0.5 Average locations per line
-            4.1 Average locations per statement
+            0.8 Average locations per line
+            5.9 Average locations per statement
 
-RAM used:   7/368 (2%) at main() level
-            21/368 (6%) worst case
+RAM used:   13/368 (4%) at main() level
+            29/368 (8%) worst case
 
 Stack used: 6 worst case (6 in main + 0 for interrupts)
 Stack size: 8
 
 Lines Stmts  %   Files
 ----- ----- ---  -----
-   86    40  29  main.c
-   47     0   0  main.h
+  111    80  44  main.c
+   61     0   0  main.h
   671     0   0  C:\Program Files (x86)\PICC\Devices\16F877A.h
-  456   100  71  C:\Program Files (x86)\PICC\Drivers\lcd.c
+  456   100  56  C:\Program Files (x86)\PICC\Drivers\lcd.c
 ----- -----
- 1260   140 Total
+ 1299   180 Total
 
 Page ROM  %  RAM   Vol Diff  Functions:
 ---- --- --- ---   --- ----  ----------
-0     21   4    1             @delay_ms1
+0     21   2    1             @delay_ms1
  Inline         3   760  4.5  lcd_read_byte
-0     49   9    2   262  3.7  lcd_read_nibble
-0     43   8    1   399  2.4  lcd_send_nibble
-0     92  16    3   415  3.7  lcd_send_byte
-0     68  12    6   852  6.2  lcd_init
-0     18   3    4   208  6.3  lcd_gotoxy
-0     44   8    1   354  4.7  lcd_putc
-0     27   5    0   136  1.3  setup
-0     22   4    0    68  1.5  MAIN
-0     53   9    0   362  3.6  showMenu
-0      3   1    0             @const667
-0     86  15    4             @PSTRINGC7_645
-0      3   1    0             @const669
-0      3   1    0             @const670
-0      3   1    0             @const671
-0      8   1    0    81  2.6  @goto10722
-0     26   5    0   167  3.9  selectMenu
+0     49   5    2   262  3.7  lcd_read_nibble
+0     43   4    1   399  2.4  lcd_send_nibble
+0     92   9    3   415  3.7  lcd_send_byte
+0     68   6    6   852  6.2  lcd_init
+0     18   2    4   208  6.3  lcd_gotoxy
+0     44   4    1   354  4.7  lcd_putc
+0     37   3    0   204  1.4  setup
+0     32   3    1   109  1.6  MAIN
+0     24   2    0   143  1.8  readVoltages
+0    137  13    0   581  3.7  showMenu
+0      5   0    0             @const674
+0     86   8    4             @PSTRINGC7_645
+0      7   1    0             @const676
+0     87   8    5   362  3.6  @PSTRINGCN7_645
+0     21   2    3             @DIV88
+0     87   8    6   167  3.9  @PRINTF_D_645
+0      5   0    0   362  3.6  @const685
+0      8   1    0    81  2.6  @const686
+0      5   0    0    81  2.6  @const687
+0      7   1    0    81  2.6  @const688
+0      5   0    0   167  3.9  @const689
+0      7   1    0    81  2.6  @const690
+0      8   1    0   167  3.9  @goto10771
+0     26   2    0   167  3.9  selectMenu
+0     54   5    0   313  3.2  setupSwitches
+0     71   7    0   290  2.8  bateryStatus
  Inline         0    81  2.6  @cinit1
 
 Program metrics:
-    Functions               13
-    Statements              140
-    Comments                247
-    Volume (V)              6804
-    Difficulty (D)          47.2
-    Effort to implement (E) 321453
-    Time to implement (T)   4 hours, 58 minutes
-    Est Delivered Bugs (B)  2
-    Cyclomatic Complexity   15
-    Maintainability (MI)    122
+    Functions               24
+    Statements              180
+    Comments                235
+    Volume (V)              12280
+    Difficulty (D)          83.6
+    Effort to implement (E) 1026676
+    Time to implement (T)   15 hours, 51 minutes
+    Est Delivered Bugs (B)  3
+    Cyclomatic Complexity   39
+    Maintainability (MI)    56
 
  Segment     Used  Free
 -----------  ----  ----
 00000-00003     4  0  
-00004-007FF   569  1475  
+00004-007FF  1054  990  
 00800-00FFF     0  2048  
 01000-017FF     0  2048  
 01800-01FFF     0  2048  

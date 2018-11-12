@@ -1,7 +1,7 @@
 ÀÄmain
-   ÀÄMAIN  0/22  Ram=0
+   ÀÄMAIN  0/32  Ram=1
       ÃÄ@cinit1  (Inline)  Ram=0
-      ÃÄsetup  0/27  Ram=0
+      ÃÄsetup  0/37  Ram=0
       ³  ÃÄlcd_init  0/68  Ram=6
       ³  ³  ÃÄ@delay_ms1  0/21  Ram=1
       ³  ³  ÃÄlcd_send_nibble  0/43  Ram=1
@@ -17,8 +17,8 @@
       ³  ÀÄlcd_init  0/68  Ram=6
       ³     ÀÄ*
       ÃÄselectMenu  0/26  Ram=0
-      ÃÄshowMenu  0/53  Ram=0
-      ³  ÃÄ@goto10722  0/8  Ram=0
+      ÃÄshowMenu  0/137  Ram=0
+      ³  ÃÄ@goto10771  0/8  Ram=0
       ³  ÃÄlcd_putc  0/44  Ram=1
       ³  ³  ÃÄlcd_gotoxy  0/18  Ram=4
       ³  ³  ³  ÀÄlcd_send_byte  0/92  Ram=3
@@ -37,16 +37,65 @@
       ³  ³  ³  ÀÄ*
       ³  ³  ÀÄlcd_putc  0/44  Ram=1
       ³  ³     ÀÄ*
+      ³  ÃÄ@PSTRINGCN7_645  0/87  Ram=5
+      ³  ³  ÃÄlcd_putc  0/44  Ram=1
+      ³  ³  ³  ÀÄ*
+      ³  ³  ÀÄlcd_putc  0/44  Ram=1
+      ³  ³     ÀÄ*
+      ³  ÃÄ@PRINTF_D_645  0/87  Ram=6
+      ³  ³  ÃÄ@DIV88  0/21  Ram=3
+      ³  ³  ÃÄ@DIV88  0/21  Ram=3
+      ³  ³  ÃÄlcd_putc  0/44  Ram=1
+      ³  ³  ³  ÀÄ*
+      ³  ³  ÃÄlcd_putc  0/44  Ram=1
+      ³  ³  ³  ÀÄ*
+      ³  ³  ÃÄlcd_putc  0/44  Ram=1
+      ³  ³  ³  ÀÄ*
+      ³  ³  ÀÄlcd_putc  0/44  Ram=1
+      ³  ³     ÀÄ*
+      ³  ÃÄlcd_putc  0/44  Ram=1
+      ³  ³  ÀÄ*
+      ³  ÃÄlcd_putc  0/44  Ram=1
+      ³  ³  ÀÄ*
       ³  ÃÄlcd_putc  0/44  Ram=1
       ³  ³  ÀÄ*
       ³  ÃÄ@PSTRINGC7_645  0/86  Ram=4
       ³  ³  ÀÄ*
+      ³  ÃÄ@PSTRINGCN7_645  0/87  Ram=5
+      ³  ³  ÀÄ*
+      ³  ÃÄ@PRINTF_D_645  0/87  Ram=6
+      ³  ³  ÀÄ*
+      ³  ÃÄlcd_putc  0/44  Ram=1
+      ³  ³  ÀÄ*
+      ³  ÃÄlcd_putc  0/44  Ram=1
+      ³  ³  ÀÄ*
       ³  ÃÄlcd_putc  0/44  Ram=1
       ³  ³  ÀÄ*
       ³  ÃÄ@PSTRINGC7_645  0/86  Ram=4
       ³  ³  ÀÄ*
+      ³  ÃÄ@PSTRINGCN7_645  0/87  Ram=5
+      ³  ³  ÀÄ*
+      ³  ÃÄ@PRINTF_D_645  0/87  Ram=6
+      ³  ³  ÀÄ*
       ³  ÃÄlcd_putc  0/44  Ram=1
       ³  ³  ÀÄ*
-      ³  ÀÄ@PSTRINGC7_645  0/86  Ram=4
+      ³  ÃÄlcd_putc  0/44  Ram=1
+      ³  ³  ÀÄ*
+      ³  ÃÄlcd_putc  0/44  Ram=1
+      ³  ³  ÀÄ*
+      ³  ÃÄ@PSTRINGC7_645  0/86  Ram=4
+      ³  ³  ÀÄ*
+      ³  ÃÄ@PSTRINGCN7_645  0/87  Ram=5
+      ³  ³  ÀÄ*
+      ³  ÃÄ@PRINTF_D_645  0/87  Ram=6
+      ³  ³  ÀÄ*
+      ³  ÃÄlcd_putc  0/44  Ram=1
+      ³  ³  ÀÄ*
+      ³  ÀÄlcd_putc  0/44  Ram=1
       ³     ÀÄ*
+      ÃÄreadVoltages  0/24  Ram=0
+      ³  ÃÄ@delay_ms1  0/21  Ram=1
+      ³  ÀÄ@delay_ms1  0/21  Ram=1
+      ÃÄsetupSwitches  0/54  Ram=0
+      ÃÄbateryStatus  0/71  Ram=0
       ÀÄ@delay_ms1  0/21  Ram=1

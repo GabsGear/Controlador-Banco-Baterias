@@ -1,0 +1,47 @@
+#include <16F877A.h>
+
+#FUSES NOWDT                    //No Watch Dog Timer
+#FUSES XT                       //Crystal osc <= 4mhz
+#FUSES NOPUT                    //No Power Up Timer
+#FUSES NOPROTECT                //Code not protected from reading
+#FUSES NODEBUG                  //No Debug mode for ICD
+#FUSES NOBROWNOUT               //No brownout reset
+#FUSES NOLVP                    //No low voltage prgming, B3(PIC16) or B5(PIC18) used for I/O
+#FUSES NOCPD                    //No EE protection
+#FUSES NOWRT                    //Program memory not write protected
+
+
+#define clear lcd_putc('\f');
+#define delay_adc       delay_us(20); 
+// lcd pins
+#define LCD_ENABLE_PIN  PIN_E0                                    
+#define LCD_RS_PIN      PIN_E1                                    
+#define LCD_RW_PIN      PIN_E2                                    
+#define LCD_DATA4       PIN_D4                                    
+#define LCD_DATA5       PIN_D5                                   
+#define LCD_DATA6       PIN_D6                                   
+#define LCD_DATA7       PIN_D7
+
+// fator divisor de tensao
+#define relac 11.1
+
+
+// voltage pins
+#device ADC=8
+#define V1 AN0
+#define V2 AN1
+#define V3 AN2
+#define V4 AN3
+
+// menu pins 
+#define up PIN_B1
+#define down PIN_B2
+
+#use delay(clock=4000000)
+#include <lcd.c>
+
+
+// Funções
+float convertVoltage(int digitalRead);
+void selectMenu();
+void showMenu();
