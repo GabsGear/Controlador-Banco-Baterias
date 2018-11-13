@@ -13,6 +13,7 @@ void setup(){
    Port_b_pullups(true);
    setup_adc(ADC_CLOCK_DIV_32);
    setup_adc_ports(V1); 
+   //setup_adc_ports(ALL_OUTPUTS);
    
    output_low(S1);
    output_low(S2);
@@ -84,14 +85,14 @@ float convertVoltage(int digital_value){
 }
 
 void setupSwitches(){
-   if ((v1_dc < 25) || (v2_dc < 25)) output_high(S1);
-   else output_low(S1);
+   if ((v1_dc < 25) || (v2_dc < 25)) output_high(S1) output_high(LS1);
+   else output_low(S1) output_low(LS1);
    
-   if ((v2_dc < 25) || (v3_dc < 25)) output_high(S2);
-   else  output_low(S2);
+   if ((v2_dc < 25) || (v3_dc < 25)) output_high(S2) output_high(LS2);
+   else  output_low(S2) output_low(LS2);
    
-   if ((v3_dc < 25) || (v4_dc < 25)) output_high(S3);
-   else  output_low(S3);
+   if ((v3_dc < 25) || (v4_dc < 25)) output_high(S3) output_high(LS3);
+   else  output_low(S3) output_low(LS3);
    
 }
 

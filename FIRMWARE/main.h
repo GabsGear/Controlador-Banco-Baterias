@@ -42,6 +42,12 @@
 #define LB2 PIN_C1
 #define LB3 PIN_C2
 #define LB4 PIN_C3
+#define LS1 PIN_C4
+#define LS2 PIN_C5
+#define LS3 PIN_C6
+
+
+
 
 // menu pins 
 #define up PIN_B1
@@ -58,3 +64,8 @@ void showMenu();
 void readVoltages();
 void setupSwitches();
 void bateryStatus();
+
+
+
+
+
