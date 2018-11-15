@@ -11,7 +11,6 @@ causará sulfatação das placas resultando na degradação da capacidade e redu
 As tensões de equalização e flutuação devem ser ajustadas em função da temperatura de acordo com a tabela abaixo.
 Em algumas ocasiões as baterias estarão expostas a variações de temperatura, neste caso pode-se adotar uma temperatura média para tensão de carga e flutuação. 
 
-+ ***O controlador deve*** ter duas opções de carga, flutuação ou equalização.
 
 ### Seguem os requisitos para carga seguindo o manual da bateria [Freedon](http://www.logik.com.br/download/ManualTecnicoBateriasFreedom.pdf)
 
@@ -24,6 +23,7 @@ Em algumas ocasiões as baterias estarão expostas a variações de temperatura,
 + ***Item 3.5 Vida útil:***  
     A temperatura do ambiente de operação da bateria deve sempre estar entre –10ºC e 45ºC, portando o controlador terá que emitir um aviso quando tais temperaturas forem atingidas.
 
++ ***O controlador deve*** ter duas opções de carga, flutuação ou equalização.
 
 ### Requisitos sistema de descarga
 + ***Sempre que houverem descargas*** o uso do banco de baterias deve ser otimizado para que todos os circuitos recebam alimentação por um maior período de tempo até a descarga de todas as baterias.
