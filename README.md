@@ -30,4 +30,4 @@ Em algumas ocasiões as baterias estarão expostas a variações de temperatura,
 
 
 #### Hardware:
-![IMG1](proc_ind.jpeg)
+[Projeto de hardware](circuito.SVG)
