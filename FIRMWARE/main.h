@@ -42,19 +42,19 @@
 #define LB2 PIN_C1
 #define LB3 PIN_C2
 #define LB4 PIN_C3
-#define LS1 PIN_C4
-#define LS2 PIN_C5
-#define LS3 PIN_C6
-
-
+#DEFINE CHARGE_LED PIN_C4
 
 
 // menu pins 
 #define up PIN_B1
-#define down PIN_B2
+#define CHARGE_MODE PIN_B2
+
 
 #use delay(clock=4000000)
 #include <lcd.c>
+
+// constantes
+const float v_equal = 15.5;
 
 
 // Funções
@@ -64,8 +64,4 @@ void showMenu();
 void readVoltages();
 void setupSwitches();
 void bateryStatus();
-
-
-
-
-
+void checkChargeMode();

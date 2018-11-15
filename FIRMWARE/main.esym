@@ -1,7 +1,8 @@
-D G "__PCM__" 0 112 ""5.015""
-D G "__DEVICE__" 0 112 "877"
-D G "__DATE__" 0 112 ""11-nov-18""
-D G "__TIME__" 0 112 ""23:46:24"" "Standard Header file for the PIC16F877A device ////////////////"
+D G "LCD_LINE_LENGTH" 3 187 "20"
+D G "__PCM__" 0 146 ""5.015""
+D G "__DEVICE__" 0 146 "877"
+D G "__DATE__" 0 146 ""15-nov-18""
+D G "__TIME__" 0 146 ""17:56:51"" "Standard Header file for the PIC16F877A device ////////////////"
 c L "set_tris_a" 2 3 6 "FUNCTION"
 v L "value" 2 37 "int8" `54 
 f B "set_tris_a" 2 37 "void(int8 value)" `53 
@@ -797,8 +798,9 @@ D G "LB1" 1 41 "PIN_C0"
 D G "LB2" 1 42 "PIN_C1"
 D G "LB3" 1 43 "PIN_C2"
 D G "LB4" 1 44 "PIN_C3"
-D G "up" 1 47 "PIN_B1"
-D G "down" 1 48 "PIN_B2"
+D G "CHARGE_LED" 1 45 "PIN_C4"
+D G "up" 1 49 "PIN_B1"
+D G "CHARGE_MODE" 1 50 "PIN_B2"
 D G "__LCD_C__" 3 76 ""
 C L "jump_to_irs" 3 2 2 "FUNCTION"
 C L "jump_to_irs" 3 2 1 "FUNCTION"
@@ -855,30 +857,44 @@ V L "on" 3 443 "int8" `656
 F G "lcd_cursor_on" 3 444 "void(int8 on)" `655 
 C L "lcd_cursor_on" 3 2 1 "FUNCTION"
 C L "lcd_cursor_on" 3 2 1 "FUNCTION"
-C L "convertVoltage" 1 54 1 "FUNCTION"
-V L "digitalRead" 1 55 "int8" `658 
-f G "convertVoltage" 1 55 "float(int8 digitalRead)" `657 
-f G "selectMenu" 1 56 "void()" `659 
-f G "showMenu" 1 57 "void()" `660 
-f G "readVoltages" 1 58 "void()" `661 
-f G "setupSwitches" 1 59 "void()" `662 
-f G "bateryStatus" 1 60 "void()" `663 
-V G "t_up" 0 3 "int8" `664 
-V G "menu" 0 4 "int8" `665 
-V G "v1_dc" 0 5 "int8" `666 
-V G "v2_dc" 0 5 "int8" `667 
-V G "v3_dc" 0 5 "int8" `668 
-V G "v4_dc" 0 5 "int8" `669 
-F G "setup" 0 7 "void()" `670 
-F G "MAIN" 0 23 "void()" `671 
-F G "readVoltages" 0 36 "void()" `661  "AQUI TA ZUADO"
-F G "showMenu" 0 46 "void()" `660 
-F G "selectMenu" 0 72 "void()" `659 
-V L "digital_value" 0 81 "int8" `693 
-F G "convertVoltage" 0 81 "float(int8 digital_value)" `657 
-V L "analogic_value" 0 82 "float" `692 
-F G "setupSwitches" 0 86 "void()" `662 
-F G "bateryStatus" 0 98 "void()" `663 
+V G "v_equal" 1 57 "float" `657 
+C L "convertVoltage" 1 56 1 "FUNCTION"
+V L "digitalRead" 1 61 "int8" `660 
+f G "convertVoltage" 1 61 "float(int8 digitalRead)" `659 
+f G "selectMenu" 1 62 "void()" `661 
+f G "showMenu" 1 63 "void()" `662 
+f G "readVoltages" 1 64 "void()" `663 
+f G "setupSwitches" 1 65 "void()" `664 
+f G "bateryStatus" 1 66 "void()" `665 
+f G "checkChargeMode" 1 67 "void()" `666 
+V G "t_up" 0 3 "int8" `667 
+V G "menu" 0 4 "int8" `668 
+V G "v1_dc" 0 5 "int8" `669 
+V G "v2_dc" 0 5 "int8" `670 
+V G "v3_dc" 0 5 "int8" `671 
+V G "v4_dc" 0 5 "int8" `672 
+F G "setup" 0 7 "void()" `673 
+F G "MAIN" 0 24 "void()" `674 
+V L "mode" 0 33 "int8" `677 
+C L "MAIN" 0 33 1 "FUNCTION"
+C L "readVoltages" 0 33 1 "FUNCTION"
+F G "readVoltages" 0 42 "void()" `663  "AQUI TA ZUADO"
+C L "readVoltages" 0 33 11 "FUNCTION"
+C L "showMenu" 0 33 1 "FUNCTION"
+F G "showMenu" 0 67 "void()" `662 
+C L "selectMenu" 0 33 1 "FUNCTION"
+F G "selectMenu" 0 93 "void()" `661 
+V L "digital_value" 0 102 "int8" `697 
+F G "convertVoltage" 0 102 "float(int8 digital_value)" `659 
+V L "analogic_value" 0 103 "float" `696 
+C L "setupSwitches" 0 33 1 "FUNCTION"
+F G "setupSwitches" 0 108 "void()" `664 
+C L "bateryStatus" 0 33 1 "FUNCTION"
+F G "bateryStatus" 0 121 "void()" `665 
+C L "checkChargeMode" 0 33 1 "FUNCTION"
+F G "checkChargeMode" 0 136 "void()" `666 
+C L "checkChargeMode" 0 33 1 "FUNCTION"
+C L "checkChargeMode" 0 33 1 "FUNCTION"
 F B "reset_cpu" 0 0
 F B "abs" 1 0
 F B "sleep" 0 0

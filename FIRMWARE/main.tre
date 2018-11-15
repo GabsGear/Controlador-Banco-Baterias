@@ -1,5 +1,5 @@
 ÀÄmain
-   ÀÄMAIN  0/32  Ram=1
+   ÀÄMAIN  0/38  Ram=1
       ÃÄ@cinit1  (Inline)  Ram=0
       ÃÄsetup  0/37  Ram=0
       ³  ÃÄlcd_init  0/68  Ram=6
@@ -17,8 +17,10 @@
       ³  ÀÄlcd_init  0/68  Ram=6
       ³     ÀÄ*
       ÃÄselectMenu  0/26  Ram=0
+      ÃÄcheckChargeMode  0/85  Ram=1
+      ³  ÀÄ@delay_ms1  0/21  Ram=1
       ÃÄshowMenu  0/137  Ram=0
-      ³  ÃÄ@goto10771  0/8  Ram=0
+      ³  ÃÄ@goto10777  0/8  Ram=0
       ³  ÃÄlcd_putc  0/44  Ram=1
       ³  ³  ÃÄlcd_gotoxy  0/18  Ram=4
       ³  ³  ³  ÀÄlcd_send_byte  0/92  Ram=3
@@ -93,7 +95,8 @@
       ³  ³  ÀÄ*
       ³  ÀÄlcd_putc  0/44  Ram=1
       ³     ÀÄ*
-      ÃÄreadVoltages  0/24  Ram=0
+      ÃÄreadVoltages  0/27  Ram=0
+      ³  ÃÄ@delay_ms1  0/21  Ram=1
       ³  ÃÄ@delay_ms1  0/21  Ram=1
       ³  ÀÄ@delay_ms1  0/21  Ram=1
       ÃÄsetupSwitches  0/54  Ram=0

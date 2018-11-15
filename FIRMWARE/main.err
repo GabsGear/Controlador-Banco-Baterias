@@ -1,4 +1,5 @@
->>> Warning 203 "main.c" Line 26(1,1): Condition always TRUE
-      Memory usage:   ROM=13%      RAM=4% - 8%
-      0 Errors,  1 Warnings.
+>>> Warning 203 "main.c" Line 27(1,1): Condition always TRUE
+>>> Warning 202 "D:\UFSC\projeto_final_banco_baterias-20181108T214644Z-001\projeto_final_banco_baterias\FIRMWARE\main.h" Line 57(13,20): Variable never used:   v_equal
+      Memory usage:   ROM=14%      RAM=4% - 8%
+      0 Errors,  2 Warnings.
 Build Successful.

@@ -1,8 +1,8 @@
 004-005 @READ_PROGRAM_MEMORY8.P1
 004-005 @WRITE_PROGRAM_MEMORY8.P2
 008     PSP_DATA
-015     CCP_1
 015     CCP_1_LOW
+015     CCP_1
 016     CCP_1_HIGH
 01B     CCP_2
 01B     CCP_2_LOW
@@ -14,43 +14,45 @@
 024     v3_dc
 025     v4_dc
 026     @TRIS_C
-027     @PRINTF_D_645.P1
-027     lcd_init.i
-027     @PSTRINGCN7_645.P1
-027     MAIN.@SCRATCH1
-027     @PSTRINGC7_645.@SCRATCH1
-028-02B lcd_init.LCD_INIT_STRING
+027     MAIN.mode
+028     lcd_init.i
 028     @PRINTF_D_645.P1
-028     @PSTRINGC7_645.@SCRATCH2
-028     @PSTRINGCN7_645.@SCRATCH1
-029     @PSTRINGC7_645.@SCRATCH3
-029     @PSTRINGCN7_645.@SCRATCH2
-029     @PRINTF_D_645.@SCRATCH1
-02A     @PSTRINGC7_645.@SCRATCH4
-02A     @PSTRINGCN7_645.@SCRATCH3
-02A     @PRINTF_D_645.@SCRATCH2
-02B     @PSTRINGCN7_645.@SCRATCH4
-02B     @PRINTF_D_645.@SCRATCH3
-02C     lcd_init.@SCRATCH1
-02C     @PRINTF_D_645.@SCRATCH4
-02D     @DIV88.P1
-02D     lcd_putc.c
-02E     lcd_gotoxy.x
+028     @PSTRINGCN7_645.P2
+028     MAIN.@SCRATCH1
+028     @PSTRINGC7_645.@SCRATCH1
+028     checkChargeMode.@SCRATCH1
+029     @PRINTF_D_645.P1
+029-02C lcd_init.LCD_INIT_STRING
+029     @PSTRINGC7_645.@SCRATCH2
+029     @PSTRINGCN7_645.@SCRATCH1
+02A     @PSTRINGC7_645.@SCRATCH3
+02A     @PSTRINGCN7_645.@SCRATCH2
+02A     @PRINTF_D_645.@SCRATCH1
+02B     @PSTRINGC7_645.@SCRATCH4
+02B     @PSTRINGCN7_645.@SCRATCH3
+02B     @PRINTF_D_645.@SCRATCH2
+02C     @PSTRINGCN7_645.@SCRATCH4
+02C     @PRINTF_D_645.@SCRATCH3
+02D     lcd_init.@SCRATCH1
+02D     @PRINTF_D_645.@SCRATCH4
 02E     @DIV88.P1
-02E     @delay_ms1.P2
-02F     lcd_gotoxy.y
-02F     @DIV88.@SCRATCH1
-030     lcd_gotoxy.address
-031     lcd_gotoxy.@SCRATCH1
-032     lcd_send_byte.address
-033     lcd_send_byte.n
-034     lcd_read_byte.low
-034     lcd_send_byte.@SCRATCH1
-035     lcd_send_nibble.n
-035     lcd_read_byte.high
-036     lcd_read_nibble.n
-036     lcd_read_byte.@SCRATCH1
-037     lcd_read_nibble.@SCRATCH1
+02E     lcd_putc.c
+02F     lcd_gotoxy.x
+02F     @delay_ms1.P1
+02F     @DIV88.P2
+030     lcd_gotoxy.y
+030     @DIV88.@SCRATCH1
+031     lcd_gotoxy.address
+032     lcd_gotoxy.@SCRATCH1
+033     lcd_send_byte.address
+034     lcd_send_byte.n
+035     lcd_read_byte.low
+035     lcd_send_byte.@SCRATCH1
+036     lcd_read_byte.high
+036     lcd_send_nibble.n
+037     lcd_read_nibble.n
+037     lcd_read_byte.@SCRATCH1
+038     lcd_read_nibble.@SCRATCH1
 077     @SCRATCH
 078     @SCRATCH
 078     _RETURN_
@@ -62,14 +64,14 @@
 10D-10E @READ_PROGRAM_MEMORY8.P2
 
 ROM Allocation:
-000004  @const674.call
-000009  @const676.call
-000010  @const685.call
-000015  @const686.call
-00001D  @const687.call
-000022  @const688.call
-000029  @const689.call
-00002E  @const690.call
+000004  @const678.call
+000009  @const680.call
+000010  @const689.call
+000015  @const690.call
+00001D  @const691.call
+000022  @const692.call
+000029  @const693.call
+00002E  @const694.call
 000035  @delay_ms1
 00004A  lcd_send_nibble
 000075  lcd_read_nibble
@@ -78,31 +80,32 @@ ROM Allocation:
 000102  lcd_init
 000146  setup
 00016B  selectMenu
-000185  lcd_gotoxy
-000197  lcd_putc
-0001C3  @PSTRINGC7_645
-000219  @PSTRINGCN7_645
-000270  @DIV88
-000285  @PRINTF_D_645
-0002DC  showMenu
-000365  @goto10771
-00036D  readVoltages
-000385  setupSwitches
-0003BB  bateryStatus
-000402  @cinit1
-000402  MAIN
-000411  @cinit2
+000185  checkChargeMode
+0001DA  lcd_gotoxy
+0001EC  lcd_putc
+000218  @PSTRINGC7_645
+00026E  @PSTRINGCN7_645
+0002C5  @DIV88
+0002DA  @PRINTF_D_645
+000331  showMenu
+0003BA  @goto10777
+0003C2  readVoltages
+0003DD  setupSwitches
+000413  bateryStatus
+00045A  @cinit1
+00045A  MAIN
+000469  @cinit2
 
 Project Directory:
     D:\UFSC\projeto_final_banco_baterias-20181108T214644Z-001\projeto_final_banco_baterias\FIRMWARE\
 
 Project Files:
-    main.c                                                  [11-nov-18 23:46  CRC=8511C963]
-    main.h                                                  [11-nov-18 23:42  CRC=B92CDFCE]
+    main.c                                                  [15-nov-18 17:54  CRC=FB7ADC50]
+    main.h                                                  [15-nov-18 17:56  CRC=2AC10B84]
     C:\Program Files (x86)\PICC\Devices\16F877A.h           [12-nov-13 15:35  CRC=81334808]
     C:\Program Files (x86)\PICC\Drivers\lcd.c               [19-set-13 16:38  CRC=D1A6378A]
 
-Source signature=62BE604D
+Source signature=4ABB9EF0
 
 Units:
     main (main)
