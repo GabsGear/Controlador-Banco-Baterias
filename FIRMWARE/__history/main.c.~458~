@@ -4,24 +4,6 @@ int t_up = 0;
 int menu = 0;
 int v1_dc, v2_dc, v3_dc, v4_dc = 0 ;
 
-#int_ext
-void trataExt(){
-      while(!input(PIN_B0)){
-         /* porcentagem de carga = somatorio das cargas *100/816*/
-         
-         float carga = v1_dc + v2_dc + v3_dc + v4_dc;
-         carga = carga*100/816;
-         printf(LCD_PUTC,"**** FALTA ****");
-         printf(LCD_PUTC,"\n  CARGA %.2f %%",  carga);
-         output_low(CHARGE_LED);
-         delay_ms(600);
-         clear;
-         output_high(CHARGE_LED);
-         delay_ms(600);
-         setupSwitches();
-      }
-}
-
 void setup(){
    lcd_init();
    
@@ -32,7 +14,6 @@ void setup(){
    Port_b_pullups(true);
    setup_adc(ADC_CLOCK_DIV_32);
    setup_adc_ports(V1);
-   setup_wdt(WDT_2304MS);
 
    
    output_low(S1);
@@ -45,7 +26,6 @@ void main()
      setup();
      
      while (True){
-         restart_wdt();
          selectMenu();
          checkChargeMode();
          showMenu(); 
@@ -171,4 +151,13 @@ void checkChargeMode(){
 }
 
 
-
+#int_ext
+void trataExt(){
+      while(!input(PIN_B0)){
+         output_low(CHARGE_LED);
+         delay_ms(400);
+         output_high(CHARGE_LED);
+         delay_ms(400);
+         setupSwitches();
+      }
+}

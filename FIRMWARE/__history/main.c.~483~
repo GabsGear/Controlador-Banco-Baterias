@@ -51,6 +51,7 @@ void main()
          showMenu(); 
          readVoltages();
          bateryStatus();
+         perform_activity();
          delay_ms(400);  
       }
 }

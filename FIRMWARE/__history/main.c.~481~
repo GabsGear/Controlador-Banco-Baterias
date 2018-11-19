@@ -32,7 +32,6 @@ void setup(){
    Port_b_pullups(true);
    setup_adc(ADC_CLOCK_DIV_32);
    setup_adc_ports(V1);
-   setup_wdt(WDT_2304MS);
 
    
    output_low(S1);
