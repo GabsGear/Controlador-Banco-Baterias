@@ -1,6 +1,6 @@
 #include <16F877A.h>
 
-#FUSES NOWDT                    //No Watch Dog Timer
+#FUSES NOWDT                    //Watch Dog Timer
 #FUSES XT                       //Crystal osc <= 4mhz
 #FUSES NOPUT                    //No Power Up Timer
 #FUSES NOPROTECT                //Code not protected from reading
@@ -9,6 +9,9 @@
 #FUSES NOLVP                    //No low voltage prgming, B3(PIC16) or B5(PIC18) used for I/O
 #FUSES NOCPD                    //No EE protection
 #FUSES NOWRT                    //Program memory not write protected
+
+#define BASE_TEMPO  (65536-625)
+
 
 
 #define clear lcd_putc('\f');
@@ -23,7 +26,7 @@
 #define LCD_DATA7       PIN_D7
 
 // fator divisor de tensao
-#define relac 11.1
+#define relac 3
 
 // voltage pins
 #device ADC=8
@@ -42,30 +45,27 @@
 #define LB2 PIN_C1
 #define LB3 PIN_C2
 #define LB4 PIN_C3
-#define LS1 PIN_C4
-#define LS2 PIN_C5
-#define LS3 PIN_C6
-
-
+#DEFINE CHARGE_LED PIN_C4
 
 
 // menu pins 
 #define up PIN_B1
-#define down PIN_B2
+#define CHARGE_MODE PIN_B2
+
 
 #use delay(clock=4000000)
 #include <lcd.c>
 
+// constantes
+const float v_equal = 80;
+const float v_min = 10;
+
 
 // Funções
-float convertVoltage(int digitalRead);
+float convertVoltage(unsigned int digitalRead);
 void selectMenu();
 void showMenu();
 void readVoltages();
 void setupSwitches();
 void bateryStatus();
-
-
-
-
-
+void checkChargeMode();

@@ -1,75 +1,90 @@
 
-ROM used:   1058/8192 (13%)
-            1058/8192 (13%) including unused fragments
+ROM used:   4894/8192 (60%)
+            5400/8192 (66%) including unused fragments
 
-            0.8 Average locations per line
-            5.9 Average locations per statement
+            3.5 Average locations per line
+            21.0 Average locations per statement
 
-RAM used:   13/368 (4%) at main() level
-            29/368 (8%) worst case
+RAM used:   45/368 (12%) at main() level
+            110/368 (30%) worst case
 
-Stack used: 6 worst case (6 in main + 0 for interrupts)
+Stack used: 8 worst case (4 in main + 4 for interrupts)
 Stack size: 8
 
 Lines Stmts  %   Files
 ----- ----- ---  -----
-  111    80  44  main.c
-   61     0   0  main.h
+  201   133  57  main.c
+   72     0   0  main.h
   671     0   0  C:\Program Files (x86)\PICC\Devices\16F877A.h
-  456   100  56  C:\Program Files (x86)\PICC\Drivers\lcd.c
+  456   100  43  C:\Program Files (x86)\PICC\Drivers\lcd.c
 ----- -----
- 1299   180 Total
+ 1400   233 Total
 
 Page ROM  %  RAM   Vol Diff  Functions:
 ---- --- --- ---   --- ----  ----------
-0     21   2    1             @delay_ms1
+0     21   0    1             @delay_ms1
  Inline         3   760  4.5  lcd_read_byte
-0     49   5    2   262  3.7  lcd_read_nibble
-0     43   4    1   399  2.4  lcd_send_nibble
-0     92   9    3   415  3.7  lcd_send_byte
-0     68   6    6   852  6.2  lcd_init
-0     18   2    4   208  6.3  lcd_gotoxy
-0     44   4    1   354  4.7  lcd_putc
-0     37   3    0   204  1.4  setup
-0     32   3    1   109  1.6  MAIN
-0     24   2    0   143  1.8  readVoltages
-0    137  13    0   581  3.7  showMenu
-0      5   0    0             @const674
-0     86   8    4             @PSTRINGC7_645
-0      7   1    0             @const676
-0     87   8    5   362  3.6  @PSTRINGCN7_645
-0     21   2    3             @DIV88
-0     87   8    6   167  3.9  @PRINTF_D_645
-0      5   0    0   362  3.6  @const685
-0      8   1    0    81  2.6  @const686
-0      5   0    0    81  2.6  @const687
-0      7   1    0    81  2.6  @const688
-0      5   0    0   167  3.9  @const689
-0      7   1    0    81  2.6  @const690
-0      8   1    0   167  3.9  @goto10771
-0     26   2    0   167  3.9  selectMenu
-0     54   5    0   313  3.2  setupSwitches
-0     71   7    0   290  2.8  bateryStatus
- Inline         0    81  2.6  @cinit1
+ Inline         2   262  3.7  lcd_read_nibble
+ Inline         1   399  2.4  lcd_send_nibble
+0    285   6    3   415  3.7  lcd_send_byte
+ Inline         6   852  6.2  lcd_init
+ Inline         4   208  6.3  lcd_gotoxy
+0     90   2    1   354  4.7  lcd_putc
+1    855  17    4   317  4.5  trataExt
+0    369   8   16             @ADDFF
+ Inline        13             @MULFF
+ Inline        14             @DIVFF
+0      8   0    0             @const688
+ Inline         4             @PSTRINGC7_645
+0      9   0    0             @const690
+ Inline         5             @PSTRINGCN7_645
+ Inline         5   195  1.8  @FTOSD
+ Inline        13   109  1.6  @DIV3232
+0    539  11   13   219  1.8  @PRINTF_L32D_645FPFPF
+0    210   4    0   114  2.8  trata_t1
+0     63   1   10   231  1.8  @FLT
+0      9   0    0   505  4.3  @const705
+0      7   0    0   505  4.3  @const706
+1    475  10    0   231  1.8  setup
+1     74   2    1   124  1.7  MAIN
+0     82   2    0   169  1.8  readVoltages
+ Inline         2             @ITOF
+2   1295  26    0   765  3.8  showMenu
+0      5   0    0             @const713
+0      6   0    0             @const714
+0      5   0    0             @const715
+0      8   0    0             @const716
+0      5   0    0   167  3.9  @const717
+0      7   0    0   167  3.9  @const718
+0      5   0    0   167  3.9  @const719
+0      7   0    0    46  1.9  @const720
+0      5   0    0   505  4.3  @const722
+2      9   0    0   505  4.3  @goto10910
+0     26   1    0   167  3.9  selectMenu
+ Inline         0   343  3.2  setupSwitches
+0    121   2    0   290  2.8  bateryStatus
+1    206   4    0   505  4.3  checkChargeMode
+ Inline         0             @cinit1
 
 Program metrics:
-    Functions               24
-    Statements              180
-    Comments                235
-    Volume (V)              12280
-    Difficulty (D)          83.6
-    Effort to implement (E) 1026676
-    Time to implement (T)   15 hours, 51 minutes
-    Est Delivered Bugs (B)  3
-    Cyclomatic Complexity   39
-    Maintainability (MI)    56
+    Functions               29
+    Statements              233
+    Comments                265
+    Volume (V)              18115
+    Difficulty (D)          99.5
+    Effort to implement (E) 1801913
+    Time to implement (T)   27 hours, 48 minutes
+    Est Delivered Bugs (B)  5
+    Cyclomatic Complexity   53
+    Maintainability (MI)    53
 
  Segment     Used  Free
 -----------  ----  ----
 00000-00003     4  0  
-00004-007FF  1054  990  
-00800-00FFF     0  2048  
-01000-017FF     0  2048  
+00004-00057    84  0  
+00058-007FF  1892  68  
+00800-00FFF  1610  438  
+01000-017FF  1304  744  
 01800-01FFF     0  2048  
 
 
