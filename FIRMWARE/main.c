@@ -2,6 +2,7 @@
 
 int t_up = 0;
 int menu = 0;
+int flag =0;
 float v1_dc, v2_dc, v3_dc, v4_dc = 0 ;
 float temp, umd = 30;
 
@@ -24,14 +25,17 @@ void trataExt(){
 
 
 // timer checkagem temperatura
-#int_timer1
-void trata_t1() 
+#INT_TIMER1
+void trata_t1 ()
 {
-        set_timer1(65536 - 65200);
-        if (temp > 40){
-              printf(LCD_PUTC,"*****ALERTA*****");
-              printf(LCD_PUTC,"\nTEMPERATURA");              
-        }
+ if (flag < 100){ // Aguarda atÃ© chegar os 10s
+   flag++;
+   set_timer1(3036);
+ }else{
+      if (temp < 31) temp = +1;
+      else temp = 30;
+   set_timer1(3036);
+ }
 }
 
 void setup(){
@@ -42,9 +46,10 @@ void setup(){
    ext_int_edge(H_TO_L);
    
    // Enable timer
+   setup_timer_1( T1_INTERNAL | T1_DIV_BY_8); // Configura o timer 1  clock interno e com pre-escaler de 8
+   enable_interrupts(INT_TIMER1);
+   enable_interrupts(GLOBAL);
 
-   //enable_interrupts(GLOBAL | INT_TIMER1);
-   //set_timer1(65536 - 65200);
 
    // lcd
    lcd_init();
@@ -66,7 +71,6 @@ void main()
      setup();
      
      while (True){
-         restart_wdt();
          selectMenu();
          checkChargeMode();
          showMenu(); 
@@ -78,7 +82,7 @@ void main()
 
 // Le as tensoes analogicas da bateria 
 void readVoltages(){ // AQUI TA ZUADO
-
+      restart_wdt();
       delay_adc;
       set_adc_channel(0);
       delay_adc;
@@ -101,7 +105,7 @@ void readVoltages(){ // AQUI TA ZUADO
       v4_dc = 255;
 }
 
-// informações do LCD
+// informaÃ§Ãµes do LCD
 void showMenu(){
   switch(menu){
        case 1:          
@@ -126,8 +130,8 @@ void showMenu(){
              break; 
        case 5:
              clear;
-             printf(LCD_PUTC,"\T: %f C",  temp);
-             printf(LCD_PUTC,"\nU: %f %%",  umd);
+             printf(LCD_PUTC,"\T: %f C",  umd);
+             printf(LCD_PUTC,"\nU: %f %%",  umd + 20);
              break; 
     } 
 }
@@ -177,14 +181,14 @@ void bateryStatus(){
 
 // modos de carga
 void checkChargeMode(){
-     if(input(CHARGE_MODE)) {   //modo flutuacao liga todas as baterias em paralelo e a fonte alimenta no modo flutuação
+     if(input(CHARGE_MODE)) {   //modo flutuacao liga todas as baterias em paralelo e a fonte alimenta no modo flutuaÃ§Ã£o
          output_low(CHARGE_LED);
          output_low(S1);
          output_low(S2);
          output_low(S3);
          
      }
-     else {    // modo equalização Remove o curto circuito entre as baterias e se carrega até que a voltagem de cada uma chegue a tensão da fonte repois religa 
+     else {    // modo equalizaÃ§Ã£o Remove o curto circuito entre as baterias e se carrega atÃ© que a voltagem de cada uma chegue a tensÃ£o da fonte repois religa 
          if ((v1_dc >= v_equal) || (v2_dc > v_equal)) { output_high(S1);}
          else {output_low(S1);}
          
@@ -195,6 +199,5 @@ void checkChargeMode(){
          else  {output_low(S3);} 
      }
 }
-
 
 
