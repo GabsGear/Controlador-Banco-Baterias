@@ -4,36 +4,16 @@ int t_up = 0;
 int menu = 0;
 int v1_dc, v2_dc, v3_dc, v4_dc = 0 ;
 
-#int_ext
-void trataExt(){
-      while(!input(PIN_B0)){
-         /* porcentagem de carga = somatorio das cargas *100/816*/
-         
-         float carga = v1_dc + v2_dc + v3_dc + v4_dc;
-         carga = carga*100/816;
-         printf(LCD_PUTC,"**** FALTA ****");
-         printf(LCD_PUTC,"\n  CARGA %.2f %%",  carga);
-         output_low(CHARGE_LED);
-         delay_ms(600);
-         clear;
-         output_high(CHARGE_LED);
-         delay_ms(600);
-         setupSwitches();
-      }
-}
-
 void setup(){
    lcd_init();
-   
-   enable_interrupts(global | int_ext);
+   enable_interrupts(global);
+   enable_interrupts(int_ext);
    ext_int_edge(H_TO_L);
-   
    lcd_init();
    Port_b_pullups(true);
    setup_adc(ADC_CLOCK_DIV_32);
-   setup_adc_ports(V1);
-   setup_wdt(WDT_2304MS);
-
+   setup_adc_ports(V1); 
+   //setup_adc_ports(ALL_OUTPUTS);
    
    output_low(S1);
    output_low(S2);
@@ -44,43 +24,26 @@ void main()
 {
      setup();
      
-     while (True){
-         restart_wdt();
+     while (1){
          selectMenu();
-         checkChargeMode();
          showMenu(); 
          readVoltages();
+         setupSwitches();
          bateryStatus();
          delay_ms(400);  
       }
 }
 
-// Le as tensoes analogicas da bateria 
 void readVoltages(){ // AQUI TA ZUADO
-
       delay_adc;
       set_adc_channel(0);
       delay_adc;
       v1_dc = read_adc();
-      delay_adc;
-     /* set_adc_channel(1);
-      delay_adc;
-      v2_dc = read_adc();
-      delay_adc;
-      set_adc_channel(2);
-      delay_adc;
-      v3_dc = read_adc();
-      delay_adc;
-      set_adc_channel(3);
-      delay_adc;
-      v4_dc = read_adc();*/
-      
       v2_dc = 50;
       v3_dc = 50;
       v4_dc = 50;
 }
 
-// informações do LCD
 void showMenu(){
   switch(menu){
        case 1:          
@@ -106,7 +69,7 @@ void showMenu(){
     } 
 }
 
-// logica dos menus
+
 void selectMenu(){
   if(input(up))  t_up = 1;
   if(!input(up) && t_up){
@@ -121,20 +84,18 @@ float convertVoltage(int digital_value){
       return 3 * analogic_value;
 }
 
-// Gerencia os switches para a melhor descarga da bateria. 
 void setupSwitches(){
-   if ((v1_dc < 25) || (v2_dc < 25)) { output_high(S1);}
-   else {output_low(S1);}
+   if ((v1_dc < 25) || (v2_dc < 25)) output_high(S1) output_high(LS1);
+   else output_low(S1) output_low(LS1);
    
-   if ((v2_dc < 25) || (v3_dc < 25)) { output_high(S2);}
-   else  {output_low(S2);}
+   if ((v2_dc < 25) || (v3_dc < 25)) output_high(S2) output_high(LS2);
+   else  output_low(S2) output_low(LS2);
    
-   if ((v3_dc < 25) || (v4_dc < 25)) {output_high(S3);}
-   else  {output_low(S3);}
+   if ((v3_dc < 25) || (v4_dc < 25)) output_high(S3) output_high(LS3);
+   else  output_low(S3) output_low(LS3);
    
 }
 
-// verifica a tensao das baterias
 void bateryStatus(){
     if (v1_dc < 25) output_high(LB1);
     else  output_low(LB1);
@@ -148,27 +109,3 @@ void bateryStatus(){
     if (v4_dc < 25) output_high(LB4);
     else  output_low(LB4);
 }
-
-// modos de carga
-void checkChargeMode(){
-     if(input(CHARGE_MODE)) {   //modo flutuacao liga todas as baterias em paralelo e a fonte alimenta no modo flutuação
-         output_low(CHARGE_LED);
-         output_low(S1);
-         output_low(S2);
-         output_low(S3);
-         
-     }
-     else {    // modo equalização Remove o curto circuito entre as baterias e se carrega até que a voltagem de cada uma chegue a tensão da fonte repois religa 
-         if ((v1_dc >= v_equal) || (v2_dc > v_equal)) { output_high(S1);}
-         else {output_low(S1);}
-         
-         if ((v2_dc > v_equal) || (v3_dc > v_equal)) { output_high(S2);}
-         else  {output_low(S2);}
-         
-         if ((v3_dc < v_equal) || (v4_dc < v_equal)) {output_high(S3);}
-         else  {output_low(S3);} 
-     }
-}
-
-
-
