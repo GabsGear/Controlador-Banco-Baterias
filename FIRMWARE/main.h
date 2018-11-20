@@ -1,6 +1,6 @@
 #include <16F877A.h>
 
-#FUSES NOWDT                    //Watch Dog Timer
+#FUSES WDT                    //Watch Dog Timer
 #FUSES XT                       //Crystal osc <= 4mhz
 #FUSES NOPUT                    //No Power Up Timer
 #FUSES NOPROTECT                //Code not protected from reading
@@ -61,7 +61,7 @@ const float v_equal = 80;
 const float v_min = 10;
 
 
-// Funções
+// FunÃ§Ãµes
 float convertVoltage(unsigned int digitalRead);
 void selectMenu();
 void showMenu();
