@@ -30,4 +30,4 @@ Em algumas ocasiões as baterias estarão expostas a variações de temperatura,
 
 
 #### Hardware:
-    ![IMG1](https://github.com/GabsGear/Controlador-Banco-Baterias/blob/master/HARDWARE/proc_ind.jpeg)
+[Circuito do hardware](https://github.com/GabsGear/Controlador-Banco-Baterias/blob/master/circuito.SVG)
